@@ -1,0 +1,51 @@
+.filter-container {
+  height: 80px;
+    
+  .search-form {
+    background: rgba(244, 244, 244, 0.79);
+    border: 1px solid #d3d3d3;
+    padding: 2px 4px;
+    max-width: 340px;
+    width: 100%;
+    margin: 10px auto;
+    border-radius: 2px;
+  }
+
+  .search-form input {
+    background: #fefefe;
+    border: none;
+    margin-right: 5px;
+    width: 216px;
+    padding: 10px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4) inset,
+      1px 1px 1px rgba(255, 255, 255, 0.75);
+    border-radius: 9px;
+  }
+
+  .search-form input:focus {
+    outline: none;
+    box-shadow: 0 0 4px rgb(190, 1, 17) inset;
+  }
+
+  .search-form button {
+    background: rgb(52, 173, 236);
+    background: linear-gradient(
+      to bottom,
+      rgb(236, 52, 61) 0%,
+      rgb(220, 38, 38) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34adec', endColorstr='#2691dc',GradientType=0 );
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font: 13px/13px "HelveticaNeue", Helvetica, Arial, sans-serif;
+    padding: 10px;
+    width: 118px;
+    box-shadow: 0 0 2px #dd2626 inset;
+    border-radius: 9px;
+  }
+
+  .search-form button:hover {
+    opacity: 0.9;
+  }
+}
