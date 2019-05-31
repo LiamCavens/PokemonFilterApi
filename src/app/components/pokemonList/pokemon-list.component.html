@@ -1,0 +1,11 @@
+<div>
+  <div *ngIf="allPokemonDetails" class="pokemon-container">
+    <li class="pokemon-list" *ngFor="let pokemon of allPokemonDetails">
+      <div class="pokemon-list-card">
+        <img src="{{pokemon.sprites.front_default}}" alt="{{pokemon.name}}">
+          <p class="pokemon-list-name">{{pokemon.id}}. {{ pokemon.name }}</p>
+      </div>
+      
+    </li>
+  </div>
+</div>
