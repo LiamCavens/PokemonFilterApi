@@ -19,24 +19,7 @@ export class PokemonListService {
   pokemon = new BehaviorSubject<Pokemon[]>([]);
   originalPokemon: Pokemon[];
 
-  constructor(private http: HttpClient) {
-    // sub
-    this.pokemon.subscribe(pokemon => {
-      // do stuff with pokemon
-    });
-
-    // pub
-    this.pokemon.next([
-      // array of pokemon
-      //charmander,
-      //charmeleon,
-      //charizard,
-    ]);
-  }
-
-  resetPokemon() {
-    this.pokemon.next(this.originalPokemon);
-  }
+  constructor(private http: HttpClient) {}
 
   onHeight() {}
 
@@ -45,7 +28,6 @@ export class PokemonListService {
     const pokemonWithSimilarName = this.originalPokemon.filter(pokemon =>
       pokemon.name.includes(str)
     );
-
     this.pokemon.next(pokemonWithSimilarName);
   }
 
@@ -87,13 +69,10 @@ export class PokemonListService {
       )
     );
 
-    // after getting all lists
-    // wait for all requests to finish
-    // then push the list of pokemon
     responses.subscribe((response: Observable<Pokemon>[]) => {
       forkJoin(response).subscribe((pokemon: Pokemon[]) => {
         this.originalPokemon = pokemon;
-        console.log(pokemon);
+        console.log(pokemon); // Keeping this log in to find info
         this.pokemon.next(pokemon);
       });
     });
@@ -111,12 +90,6 @@ export class PokemonListService {
       retry(3),
       catchError(this.handleError)
     );
-  }
-
-  sort() {
-    // get pokemon
-    // sort
-    // push to behaviour subject
   }
 
   private handleError(error: HttpErrorResponse) {

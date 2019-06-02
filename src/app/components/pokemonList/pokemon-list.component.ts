@@ -8,11 +8,7 @@ import { Pokemon } from './pokemon';
   styleUrls: ["./pokemon-list.component.less"]
 })
 export class PokemonList implements OnInit {
-  pokemonListData: PokemonListData;
   allPokemonDetails: Pokemon[];
-  allPokemonCopy: string[];
-  headers: string[];
-  pokemon: Pokemon[];
 
   constructor(private pokemonListDataService: PokemonListService) {}
 
