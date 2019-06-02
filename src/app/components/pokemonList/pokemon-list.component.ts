@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PokemonListService, PokemonListData } from "./pokemon-list.service";
+import { Pokemon } from './pokemon';
 
 @Component({
   selector: "pokemon-list",
@@ -8,41 +9,18 @@ import { PokemonListService, PokemonListData } from "./pokemon-list.service";
 })
 export class PokemonList implements OnInit {
   pokemonListData: PokemonListData;
-  allPokemonDetails: string[];
+  allPokemonDetails: Pokemon[];
+  allPokemonCopy: string[];
   headers: string[];
+  pokemon: Pokemon[];
 
   constructor(private pokemonListDataService: PokemonListService) {}
 
   ngOnInit() {
-    this.showPokemonListData();
-  }
+    this.pokemonListDataService.pokemon.subscribe(pokemon => {
+      this.allPokemonDetails = pokemon;
+    })
 
-  showPokemonListData() {
-    let pokemonArray = [];
-    this.pokemonListDataService
-      .getPokemonList()
-      .subscribe((data: PokemonListData) => {
-        this.pokemonListData = data;
-        this.pokemonListData.results.forEach(pokemon => {
-          this.pokemonListDataService.getPokemonListDetails(pokemon.url).subscribe(
-            pokemon => {
-              pokemonArray.push(pokemon);
-              pokemonArray.sort((a, b) => {
-                return a.id - b.id;
-              });
-            }
-          );
-        })
-        this.allPokemonDetails = pokemonArray;
-        console.log(pokemonArray);
-      });
-  }
-
-  showPokemonListDataResponse() {
-    this.pokemonListDataService.getPokemonListResponse().subscribe(resp => {
-      const keys = resp.headers.keys();
-      this.headers = keys.map(key => `${key}: ${resp.headers.get(key)}`);
-      this.pokemonListData = { ...resp.body };
-    });
+    this.pokemonListDataService.loadPokemon();
   }
 }

@@ -1,11 +1,11 @@
 .filter-container {
   height: 80px;
-    
+
   .search-form {
     background: rgba(244, 244, 244, 0.79);
     border: 1px solid #d3d3d3;
     padding: 2px 4px;
-    max-width: 340px;
+    max-width: 360px;
     width: 100%;
     margin: 10px auto;
     border-radius: 2px;
@@ -15,6 +15,7 @@
     background: #fefefe;
     border: none;
     margin-right: 5px;
+    font-family: "Raleway", sans-serif;
     width: 216px;
     padding: 10px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.4) inset,
@@ -28,7 +29,7 @@
   }
 
   .search-form button {
-    background: rgb(52, 173, 236);
+    background: rgb(236, 52, 76);
     background: linear-gradient(
       to bottom,
       rgb(236, 52, 61) 0%,
@@ -38,7 +39,8 @@
     border: none;
     color: #fff;
     cursor: pointer;
-    font: 13px/13px "HelveticaNeue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-family: "Raleway", sans-serif;
     padding: 10px;
     width: 118px;
     box-shadow: 0 0 2px #dd2626 inset;
@@ -47,5 +49,28 @@
 
   .search-form button:hover {
     opacity: 0.9;
+  }
+
+  .filter-buttons {
+    display: flex;
+    justify-content: center;
+
+    button {
+      margin: 0 10px;
+      padding: 6px;
+      width: 4%;
+      font-family: "Raleway", sans-serif;
+      cursor: pointer;
+      font-weight: bold;
+      color: yellow;
+      background-color: dodgerblue;
+      border-radius: 9px;
+      border: red;
+    }
+
+    .button-active {
+      color: dodgerblue !important;
+      background-color: yellow !important;
+    }
   }
 }

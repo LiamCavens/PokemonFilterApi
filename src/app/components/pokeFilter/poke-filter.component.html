@@ -3,10 +3,18 @@
     <input
       id="search"
       ref="search"
-      type="search"
+      [type]="filterType === height ? number : text"
       name="search"
-      placeholder="What are you looking for?"
+      placeholder="Filter by {{ filterType }}"
+      #filterValue
     />
-    <button>Search</button>
+    <button type="submit" (click)="onSearch(filterValue.value)">Search</button>
+  </div>
+  
+  <div class="filter-buttons">
+    <button [ngClass]="{'button-active': filterType === 'name'}" (click)="[onButtonFilter('name'), filterValue ? filterValue.value = '' : null]">Name</button>
+    <button [ngClass]="{'button-active': filterType === 'type'}" (click)="[onButtonFilter('type'), filterValue ? filterValue.value = '' : null]">Type</button>
+    <button [ngClass]="{'button-active': filterType === 'height'}" (click)="[onButtonFilter('height'), filterValue ? filterValue.value = '' : null]">Height</button>
+    <button [ngClass]="{'button-active': filterType === 'abilities'}" (click)="[onButtonFilter('abilities'), filterValue ? filterValue.value = '' : null]">Abilities</button>
   </div>
 </div>
